@@ -18,10 +18,10 @@ var letterCombinations = function(digits) {
     if(!digits.length) return [];
     const results = [];
 
-    function recurse(digits, str) {
-        for(let letter of letters[digits[0]]) {
-            if(digits.length > 1) {
-                recurse(digits.slice(1), str + letter);
+    function recurse(digit, str) {
+        for(let letter of letters[digits[digit]]) {
+            if(digits.length - digit > 1) {
+                recurse(digit + 1, str + letter);
             } else {
                 results.push(str + letter);
             }
@@ -29,5 +29,5 @@ var letterCombinations = function(digits) {
         return results;
     }
 
-    return recurse(digits, "");
+    return recurse(0, "");
 };
